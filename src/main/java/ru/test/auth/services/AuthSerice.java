@@ -9,6 +9,7 @@ import reactor.core.publisher.Mono;
 import ru.test.auth.models.RolesResponse;
 import ru.test.auth.models.StatusResponse;
 import ru.test.auth.models.User;
+import ru.test.auth.models.enums.Status;
 import ru.test.auth.utils.AuthUtils;
 
 @Service
@@ -74,7 +75,7 @@ public class AuthSerice {
                 .uri(uriSetStatus)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(StatusResponse.builder()
-                        .status("increased")
+                        .status(Status.INCREASED.toString())
                         .token(authUtils.encode(email, code))
                         .build(),
                         StatusResponse.class)
